@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    {% if data %}
+    <h4>Data added successfully</h4>
+    {% endif %}
+    <form method='POST' id="my_form" action="{% url 'app:submit_data' %}">
+        {% csrf_token %}
+        <div class="form-row">
+            <div class="form-group">
+                <div class="col-md-6 mb-3">
+                    <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                           id="user_name" aria-describedby="basic-addon1">
+                </div>
+                <div class="col-md-6 mb-3">
+                    <textarea class="form-control" id="goal" placeholder="Goals"
+                              aria-label="With text area"></textarea>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label class="form-label">Priority</label>
+                <select id="priority" class="form-select" aria-label="Default select example">
+                    <option value="L">Low</option>
+                    <option value="M">Medium</option>
+                    <option value="H">High</option>
+                </select>
+            </div>
+            <div class="col-md-4 mb-3">
+                <input type="text" class="days form-control" placeholder="Days" aria-label="Days">
+            </div>
+            <div class="col-md-4 mb-3">
+                <button type="button" id="submit" class="btn btn-primary">Submit</button>
+                <button type="button" id="cancel" class="btn btn-danger">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}
